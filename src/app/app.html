@@ -1,1 +1,9 @@
-<app-header></app-header>
+@if (isLandscape()) {
+  <app-nav-desktop></app-nav-desktop>
+} @else {
+  <app-nav-mobile></app-nav-mobile>
+}
+
+<div class="content" [class.desktop-layout]="isLandscape()">
+  <router-outlet></router-outlet>
+</div>

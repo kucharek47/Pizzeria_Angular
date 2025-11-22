@@ -1,12 +1,17 @@
 body {
   background: #dfdede;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
 }
 .ekran_ladowania {
   position: fixed;
   top: 50%;
   left: 50%;
-  width: 450px;
-  height: 450px;
+  width: min(80vw, 80dvh, 500px);
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
   transform: translate(-50%, -50%);
 }
 .kawalek_pizzy {
@@ -29,3 +34,6 @@ body {
 .kawalek_pizzy[data-index="5"] { transform: rotate(225deg); }
 .kawalek_pizzy[data-index="6"] { transform: rotate(270deg); }
 .kawalek_pizzy[data-index="7"] { transform: rotate(315deg); }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

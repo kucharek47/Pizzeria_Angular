@@ -1,0 +1,65 @@
+.left-nav-container {
+  position: fixed;
+  left: 0;
+  width: 11vw;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+  padding-top: 20px;
+  z-index: 1000;
+}
+.nav-item {
+  width: 80%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  text-decoration: none;
+  color: #757575;
+  transition: color 0.2s ease;
+
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.nav-item:hover {
+  background-color: rgba(0,0,0,0.04);
+  color: #000;
+}
+
+.nav-item.active {
+  color: #d32f2f;
+  background-color: rgba(211, 47, 47, 0.05);
+  border-right: 3px solid #d32f2f;
+}
+.nav-label {
+  font-size: 12px;
+  margin-top: 4px;
+  font-weight: 500;
+  text-align: center;
+}
+#logo {
+  padding: 0;
+  margin-bottom: 20px;
+  width: 90%;
+}
+.left-nav-container img {
+  border-radius: 10px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+.left-nav-container a {
+  padding: 16px;
+}
+.kreska {
+  border: none;
+  height: 3px;
+  background-color: gray;
+  width: 80%;
+  margin: 10px 0;
+}

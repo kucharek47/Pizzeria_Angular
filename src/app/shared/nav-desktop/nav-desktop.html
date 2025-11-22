@@ -1,0 +1,72 @@
+<nav class="left-nav-container">
+  <a routerLink="/kontakt"
+     routerLinkActive="active"
+     class="nav-item"
+     id="logo"
+     matRipple>
+
+    <img src="images/logo.png">
+  </a>
+  <a routerLink="/menu"
+     routerLinkActive="active"
+     class="nav-item"
+     matRipple>
+
+    <mat-icon fontSet="material-symbols-outlined">Menu_Book_2</mat-icon>
+    <span class="nav-label">Menu</span>
+  </a>
+  <a routerLink="/skladanie_pizzy"
+     routerLinkActive="active"
+     class="nav-item"
+     matRipple>
+
+    <mat-icon fontSet="material-symbols-outlined">local_pizza</mat-icon>
+    <span class="nav-label">Własna pizzy</span>
+  </a>
+  <a routerLink="/koszyk"
+     routerLinkActive="active"
+     class="nav-item"
+     matRipple>
+    <mat-icon
+      fontSet="material-symbols-outlined"
+      [matBadge]="cartCount()"
+      matBadgeColor="warn"
+      [matBadgeHidden]="cartCount() === 0">
+      shopping_cart
+    </mat-icon>
+    <span class="nav-label">Koszyk</span>
+  </a>
+  <a routerLink="/zamowione"
+     routerLinkActive="active"
+     class="nav-item"
+     matRipple>
+
+    <mat-icon fontSet="material-symbols-outlined">order_approve</mat-icon>
+    <span class="nav-label">Zamówienia</span>
+  </a>
+  <hr class="kreska">
+  <a routerLink="/home"
+     routerLinkActive="active"
+     class="nav-item"
+     matRipple>
+
+    <mat-icon fontSet="material-symbols-outlined">home</mat-icon>
+    <span class="nav-label">Home</span>
+  </a>
+  <a routerLink="/lokal"
+     routerLinkActive="active"
+     class="nav-item"
+     matRipple>
+
+    <mat-icon fontSet="material-symbols-outlined">Storefront</mat-icon>
+    <span class="nav-label">O lokalu</span>
+  </a>
+  <a routerLink="/kontakt"
+     routerLinkActive="active"
+     class="nav-item"
+     matRipple>
+
+    <mat-icon fontSet="material-symbols-outlined">Help_Clinic</mat-icon>
+    <span class="nav-label">O mnie</span>
+  </a>
+</nav>

@@ -1,0 +1,41 @@
+.top-nav-container {
+  position: fixed;
+  top: 0;
+  height: 8vh;
+}
+.bottom-nav-container {
+  position: fixed;
+  bottom: 0;
+  height: 8vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: stretch;
+}
+.nav-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  text-decoration: none;
+  color: #757575;
+  transition: color 0.2s ease;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.nav-label {
+  font-size: 12px;
+  margin-top: 4px;
+  font-weight: 500;
+}
+#logo {
+  flex:3;
+}
+.top-nav-container img {
+  border-radius: 10px;
+  height: 6.8vh;
+  width: auto;
+  object-fit: contain;
+}
