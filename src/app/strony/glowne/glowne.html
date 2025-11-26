@@ -1,0 +1,25 @@
+<div class="wybor_wm">
+
+  <div class="wybor_w">
+    <a routerLink="/skladanie_pizzy">
+      <span>Stwórz własną pizzę</span>
+
+      <div class="animacja">
+        <img src="images/zakupowe/Gemini_Generated_Image_vi62bkvi62bkvi62.png" alt="Pizza base">
+        <img [src]="obrazek1" [class.losowanie]="obrazek_zmiany" [style.top]="top_obrazek">
+        <img [src]="obrazek2" id="l2" [class.losowanie]="obrazek_zmiany" [style.top]="top_obrazek">
+      </div>
+    </a>
+  </div>
+
+  <div class="wybor_m">
+    <a routerLink="/menu">
+      <span>Wybierz sprawdzone pizze</span>
+      <div class="animacja">
+        <img src="images/zakupowe/zamawianie.png" alt="Menu">
+        <img [src]="obrazek3" id="l3" [class.losowanie]="obrazek_zmiany" [style.top]="top_obrazek">
+      </div>
+    </a>
+  </div>
+
+</div>

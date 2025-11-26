@@ -1,0 +1,73 @@
+.wybor_wm {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+}
+
+.wybor_w, .wybor_m {
+  flex: 1;
+  max-width: 500px;
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  cursor: pointer;
+}
+
+span {
+  display: block;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #333;
+  height: 7vh;
+  align-items: center;
+}
+
+.animacja {
+  position: relative;
+  width: 100%;
+  line-height: 0;
+}
+.animacja > img:not(.losowanie) {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.losowanie {
+  overflow: hidden;
+  border: 1px black solid;
+  position: absolute;
+  width: 20%;
+  height: 20%;
+  object-fit: contain;
+  top: 50%;
+  transform: translateY(-50%);
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+  z-index: 10;
+}
+
+#l1 {
+  left: 12%;
+  top: 30%;
+}
+
+#l2 {
+  right: 12%;
+  top: 30%;
+}
+#l3 {
+  left: 8%;
+  top: 30%;
+}

@@ -4,6 +4,6 @@
   <app-nav-mobile></app-nav-mobile>
 }
 
-<div class="content" [class.desktop-layout]="isLandscape()">
+<div class="app-contener" [class.nav-mod-desktop]="isLandscape()" [class.nav-mod-mobile]="!isLandscape()">
   <router-outlet></router-outlet>
 </div>
