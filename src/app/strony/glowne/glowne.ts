@@ -54,7 +54,7 @@ export class Glowne {
       }
       this.obrazek1 = losowanie_lista(this.lista_obrazkow_dodatki)
       this.obrazek2 = losowanie_lista(this.lista_obrazkow_dodatki)
-      this.obrazek3 = losowanie_lista(this.lista_obrazkow_pizza)
+      this.obrazek3 = losowanie_lista(this.lista_obrazkow_pizza);
     }, 5000);
   }
   ngOnDestroy(): void {
