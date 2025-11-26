@@ -34,8 +34,7 @@ export class Glowne {
   obrazek1:string = "images/dodatki/ser.png"
   obrazek2:string = "images/dodatki/ser.png"
   obrazek3:string = "images/pizza_gotowe/ser.png"
-  top_obrazek:number = 0;
-  obrazek_zmiany :boolean=false
+  top_obrazek:string = "0%"; //TODO img umiesc w div aby top dziala wzgledem div a nie img caly sie ruszal
   ngOnInit(): void {
     this.startDiscoMode();
   }
@@ -47,14 +46,15 @@ export class Glowne {
     function sleep(ms: number): Promise<void> {
       return new Promise(resolve => setTimeout(resolve, ms));
     }
-    this.ustawienia_obrazkow = setInterval(() => {
+    this.ustawienia_obrazkow = setInterval(async () => {
       for (let x of [0,2,3,4,2,-2,-1,5,10,20,30]) {
-        this.top_obrazek = x
-        sleep(100)
+        this.top_obrazek = `${x}%`
+        console.log(x)
+        await sleep(1000)
       }
-      this.obrazek1 = losowanie_lista(this.lista_obrazkow_dodatki)
-      this.obrazek2 = losowanie_lista(this.lista_obrazkow_dodatki);
-      this.obrazek3 = losowanie_lista(this.lista_obrazkow_pizza);
+      this.obrazek1 = `images/dodatki/${losowanie_lista(this.lista_obrazkow_dodatki)}`
+      this.obrazek2 = `images/dodatki/${losowanie_lista(this.lista_obrazkow_dodatki)}`
+      this.obrazek3 = `images/pizza_gotowe/${losowanie_lista(this.lista_obrazkow_pizza)}`
     }, 5000);
   }
   ngOnDestroy(): void {
