@@ -1,3 +1,4 @@
+<tui-root>
 @if (isLandscape()) {
   <app-nav-desktop></app-nav-desktop>
 } @else {
@@ -7,3 +8,5 @@
 <div class="app-contener" [class.nav-mod-desktop]="isLandscape()" [class.nav-mod-mobile]="!isLandscape()">
   <router-outlet></router-outlet>
 </div>
+
+</tui-root>

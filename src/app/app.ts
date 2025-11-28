@@ -1,3 +1,4 @@
+import { TuiRoot } from "@taiga-ui/core";
 import { Component, signal, HostListener, OnInit, inject } from '@angular/core';
 import { NavMobil } from './shared/nav-mobile/nav-mobile';
 import { NavDesktop } from './shared/nav-desktop/nav-desktop';
@@ -8,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [NavMobil, NavDesktop, RouterOutlet],
+  imports: [NavMobil, NavDesktop, RouterOutlet, TuiRoot, TuiRoot],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

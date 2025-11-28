@@ -47,15 +47,16 @@ export class Glowne {
       return new Promise(resolve => setTimeout(resolve, ms));
     }
     this.ustawienia_obrazkow = setInterval(async () => {
-      for (let x of [0,2,3,4,2,-2,-1,5,10,20,30]) {
+      for (let x of [0,2,3,4,2,-2,-1,5,20,40,60,100]) {
         this.top_obrazek = `${x}%`
         console.log(x)
-        await sleep(1000)
+        await sleep(100)
       }
       this.obrazek1 = `images/dodatki/${losowanie_lista(this.lista_obrazkow_dodatki)}`
       this.obrazek2 = `images/dodatki/${losowanie_lista(this.lista_obrazkow_dodatki)}`
       this.obrazek3 = `images/pizza_gotowe/${losowanie_lista(this.lista_obrazkow_pizza)}`
-    }, 5000);
+      this.top_obrazek = "0%"
+    }, 3000);
   }
   ngOnDestroy(): void {
     if (this.ustawienia_obrazkow) {
