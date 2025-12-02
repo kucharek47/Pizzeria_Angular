@@ -1,1 +1,42 @@
-<p>menu works!</p>
+@if (loading) {
+  <div>Ładowanie menu...</div>
+}
+@if (!loading) {
+  <div>
+    @for (item of menu; track item.id) {
+      <div class="pozycja">
+        <img [src]="item.obrazek_path" alt="{{item.nazwa}}">
+        <span class="1">{{ item.nazwa }}</span>
+        <span class="2">Składniki:
+          @for (skladnik of item.skladniki; track $index) {
+            {{skladnik}}{{$last ? '':', '}}
+          }
+        </span>
+      </div>
+    }
+    <table mat-table [dataSource]="menu">
+      <ng-container matColumnDef="obrazek">
+        <th mat-header-cell *matHeaderCellDef> Obrazek </th>
+        <td mat-cell *matCellDef="let item">
+          <img [src]="item.obrazek_path" width="60">
+        </td>
+      </ng-container>
+
+      <!-- Nazwa -->
+      <ng-container matColumnDef="nazwa">
+        <th mat-header-cell *matHeaderCellDef> Nazwa </th>
+        <td mat-cell *matCellDef="let item">
+          <span class="tytul">{{ item.nazwa }}</span>
+          <span class="skladniki_pod">{{ item.skladniki.join(', ') }}</span>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="Mała 32cm">
+        <th mat-header-cell *matHeaderCellDef> Nazwa </th>
+        <td mat-cell *matCellDef="let item">
+          <span class="tytul">{{ item.nazwa }}</span>
+          <span class="skladniki_pod">{{ item.skladniki.join(', ') }}</span>
+        </td>
+      </ng-container>
+    </table>
+  </div>
+}

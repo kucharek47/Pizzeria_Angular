@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {RouterLink} from '@angular/router';
-
+import { Orientacja } from '../../services/orientacja/orientacja';
 @Component({
   selector: 'app-glowne',
   imports: [
@@ -10,6 +10,7 @@ import {RouterLink} from '@angular/router';
   styleUrl: './glowne.css',
 })
 export class Glowne {
+  orientacja = inject(Orientacja);
   lista_obrazkow_dodatki:string[] = [
     'ananas.png',
     'boczek.png',

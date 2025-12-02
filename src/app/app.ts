@@ -5,6 +5,7 @@ import { NavDesktop } from './shared/nav-desktop/nav-desktop';
 import { RouterOutlet } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { HttpClient } from '@angular/common/http';
+import { Orientacja } from './services/orientacja/orientacja';
 
 @Component({
   selector: 'app-root',
@@ -18,19 +19,12 @@ export class App implements OnInit {
   // Wstrzykiwanie
   private http = inject(HttpClient);
   private cookieService = inject(CookieService);
+  orientacja = inject(Orientacja);
 
   // Konfiguracja
   private readonly COOKIE_NAME = 'session_token';
   private readonly API_URL_START = 'http://192.168.10.149:5000/api/start';
   private readonly API_URL_CHECK = 'http://192.168.10.149:5000/api/check_cookiess';
-
-  // Sygnał układu (Desktop/Mobile)
-  isLandscape = signal(window.matchMedia('(orientation: landscape)').matches);
-
-  @HostListener('window:resize')
-  onResize() {
-    this.isLandscape.set(window.matchMedia('(orientation: landscape)').matches);
-  }
 
   ngOnInit() {
     this.zarzadzajSesja();

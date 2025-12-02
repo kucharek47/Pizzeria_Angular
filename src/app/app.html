@@ -1,11 +1,11 @@
 <tui-root>
-@if (isLandscape()) {
+@if (orientacja.isLandscape()) {
   <app-nav-desktop></app-nav-desktop>
 } @else {
   <app-nav-mobile></app-nav-mobile>
 }
 
-<div class="app-contener" [class.nav-mod-desktop]="isLandscape()" [class.nav-mod-mobile]="!isLandscape()">
+<div class="app-contener" [class.nav-mod-desktop]="orientacja.isLandscape()" [class.nav-mod-mobile]="!orientacja.isLandscape()">
   <router-outlet></router-outlet>
 </div>
 

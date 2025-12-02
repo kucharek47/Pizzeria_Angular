@@ -8,6 +8,9 @@ import { Zamowienia } from './strony/zamowienia/zamowienia';
 import { OLokalu } from './strony/o-lokalu/o-lokalu';
 import { Kontakt } from './strony/kontakt/kontakt';
 import { OMnie } from './strony/o-mnie/o-mnie';
+import { Narzedzia} from './strony/o-mnie/narzedzia/narzedzia';
+import { MicroPython} from './strony/o-mnie/micro-python/micro-python'
+import { Linux } from './strony/o-mnie/linux/linux';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -25,5 +28,5 @@ export const routes: Routes = [
 
   { path: 'kontakt', component: Kontakt },
 
-  { path: 'o-mnie', component: OMnie },
+  { path: 'o-mnie', component: Linux },
 ];
