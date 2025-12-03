@@ -1,0 +1,45 @@
+.menu tr {
+  height: 60px;
+}
+.menu img {
+  height: 60px;
+  width: auto;
+}
+.tytul {
+  font-size: 20px;
+  font-weight: 700;
+}
+.skladniki {
+  display: block;
+}
+.cena {
+  font-size: 16px;
+  font-weight: 500;
+}
+table {
+  width: 100%;
+}
+.centrum {
+  align-items: center;
+}
+.lewy_full {
+  align-items: flex-start;
+}
+.menu th,
+.menu td {
+  padding: 10px;
+  white-space: nowrap;
+}
+
+.menu td:nth-child(1),
+.menu td:nth-child(2),
+.menu td:nth-child(4),
+.menu td:nth-child(5),
+.menu td:nth-child(6),
+.menu td:nth-child(7) {
+  width: 1%;
+}
+
+.menu td:nth-child(3) {
+  width: 100%;
+}

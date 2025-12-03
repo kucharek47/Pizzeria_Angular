@@ -3,40 +3,38 @@
 }
 @if (!loading) {
   <div>
-    @for (item of menu; track item.id) {
-      <div class="pozycja">
-        <img [src]="item.obrazek_path" alt="{{item.nazwa}}">
-        <span class="1">{{ item.nazwa }}</span>
-        <span class="2">Składniki:
-          @for (skladnik of item.skladniki; track $index) {
-            {{skladnik}}{{$last ? '':', '}}
-          }
-        </span>
-      </div>
-    }
-    <table mat-table [dataSource]="menu">
-      <ng-container matColumnDef="obrazek">
-        <th mat-header-cell *matHeaderCellDef> Obrazek </th>
-        <td mat-cell *matCellDef="let item">
-          <img [src]="item.obrazek_path" width="60">
-        </td>
-      </ng-container>
-
-      <!-- Nazwa -->
-      <ng-container matColumnDef="nazwa">
-        <th mat-header-cell *matHeaderCellDef> Nazwa </th>
-        <td mat-cell *matCellDef="let item">
-          <span class="tytul">{{ item.nazwa }}</span>
-          <span class="skladniki_pod">{{ item.skladniki.join(', ') }}</span>
-        </td>
-      </ng-container>
-      <ng-container matColumnDef="Mała 32cm">
-        <th mat-header-cell *matHeaderCellDef> Nazwa </th>
-        <td mat-cell *matCellDef="let item">
-          <span class="tytul">{{ item.nazwa }}</span>
-          <span class="skladniki_pod">{{ item.skladniki.join(', ') }}</span>
-        </td>
-      </ng-container>
+    <table class="menu">
+      <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th class="centrum">24cm</th>
+        <th class="centrum">32cm</th>
+        <th class="centrum">42cm</th>
+        <th class="centrum">60cm</th>
+      </tr>
+      @for (item of menu; track item.id) {
+        <tr>
+          <td><span class="tytul centrum">{{item.id}}.</span></td>
+          <td class="centrum">
+            <img [src]="item.obrazek_path">
+          </td>
+          <td class="lewy_full">
+            <div class="nazwa_i_skladniki">
+              <span class="tytul">{{ item.nazwa }}</span>
+              <span class="skladniki">
+                @for (skladnik of item.skladniki; track $index) {
+                  {{skladnik}}{{$last ? '': ', '}}
+                }
+              </span>
+            </div>
+          </td>
+          <td class="cena centrum">{{20 + (item.skladniki.length * 3)}},00</td>
+          <td class="cena centrum">{{30 + (item.skladniki.length * 3)}},00</td>
+          <td class="cena centrum">{{40 + (item.skladniki.length * 3)}},00</td>
+          <td class="cena centrum">{{50 + (item.skladniki.length * 3)}},00</td>
+        </tr>
+      }
     </table>
   </div>
 }
