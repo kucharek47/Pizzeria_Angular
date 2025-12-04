@@ -14,7 +14,7 @@ export interface MenuItem {
 })
 export class MenuService {
 
-  private apiUrl = 'http://localhost:5000/api/menu';
+  private apiUrl = 'http://192.168.10.149:5000/api/menu';
 
   constructor(private http: HttpClient) {}
 

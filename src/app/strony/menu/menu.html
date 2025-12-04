@@ -5,34 +5,43 @@
   <div>
     <table class="menu">
       <tr>
-        <th></th>
-        <th></th>
-        <th></th>
+        <th class="centrum"></th>
+        <th class="lewy_full"></th>
         <th class="centrum">24cm</th>
         <th class="centrum">32cm</th>
         <th class="centrum">42cm</th>
         <th class="centrum">60cm</th>
       </tr>
       @for (item of menu; track item.id) {
-        <tr>
-          <td><span class="tytul centrum">{{item.id}}.</span></td>
-          <td class="centrum">
-            <img [src]="item.obrazek_path">
-          </td>
-          <td class="lewy_full">
-            <div class="nazwa_i_skladniki">
-              <span class="tytul">{{ item.nazwa }}</span>
-              <span class="skladniki">
-                @for (skladnik of item.skladniki; track $index) {
-                  {{skladnik}}{{$last ? '': ', '}}
+        <tr (click)="openAddDialog(item)">
+          <td><span class="tytul">{{item.id}}.</span></td>
+          <td>
+            @if (orientacja.isLandscape()) {
+              <img [src]="item.obrazek_path" class="wpasowanie_obrazka">
+              <div class="nazwa_i_skladniki">
+                <span class="tytul">{{ item.nazwa }}</span>
+                <span class="skladniki">Dodatkowe składniki:
+                  @for (skladnik of item.skladniki; track $index) {
+                    {{skladnik}}{{$last ? '': ', '}}
+                  }
+                  </span>
+              </div>
+            } @else {
+              <div class="animacja">
+                @if (nazwa_czy_obrazek) {
+                  <img [src]="item.obrazek_path" class="wpasowanie_obrazka" @fadeSlide>
+                } @else {
+                  <div class="nazwa_i_skladniki" @fadeSlide>
+                    <span class="tytul">{{ item.nazwa }}</span>
+                  </div>
                 }
-              </span>
-            </div>
+              </div>
+            }
           </td>
-          <td class="cena centrum">{{20 + (item.skladniki.length * 3)}},00</td>
-          <td class="cena centrum">{{30 + (item.skladniki.length * 3)}},00</td>
-          <td class="cena centrum">{{40 + (item.skladniki.length * 3)}},00</td>
-          <td class="cena centrum">{{50 + (item.skladniki.length * 3)}},00</td>
+          <td class="cena">{{20 + (item.skladniki.length * 3)}}@if (orientacja.isLandscape()){,00}</td>
+          <td class="cena">{{30 + (item.skladniki.length * 3)}}@if (orientacja.isLandscape()){,00}</td>
+          <td class="cena">{{40 + (item.skladniki.length * 4)}}@if (orientacja.isLandscape()){,00}</td>
+          <td class="cena">{{50 + (item.skladniki.length * 4)}}@if (orientacja.isLandscape()){,00}</td>
         </tr>
       }
     </table>

@@ -9,7 +9,7 @@
   align-items: center;
   box-shadow: 2px 0 10px rgba(0,0,0,0.1);
   padding-top: 5vh;
-
+  z-index: 9999 !important;
 }
 .nav-item {
   width: 80%;

@@ -1,0 +1,27 @@
+<h2 mat-dialog-title>Dodaj do koszyka</h2>
+
+<div mat-dialog-content>
+  <p>Nazwa: {{ data.nazwa }}</p>
+  <mat-radio-group aria-label="ciasto">
+    <mat-radio-button value="1">Cienkie Włoskie</mat-radio-button>
+    <mat-radio-button value="2">Tradycyjne</mat-radio-button>
+    <mat-radio-button value="3">grube</mat-radio-button>
+  </mat-radio-group>
+
+  <mat-form-field appearance="fill" style="width: 100%; margin-top: 16px;">
+    <mat-label>Wybierz opcję</mat-label>
+    <mat-select [(value)]="selected">
+      @for(x of options; track x) {
+        <mat-option>{{x}}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+
+  <p>Cena: {{ data.cena }} zł</p>
+</div>
+
+<div mat-dialog-actions align="end">
+
+  <button mat-button (click)="close()">Anuluj</button>
+  <button mat-flat-button color="primary" (click)="confirm()">Dodaj</button>
+</div>

@@ -11,7 +11,6 @@ import {MatDivider} from "@angular/material/divider";
   selector: 'app-micro-python',
     imports: [
         MatAccordion,
-        MatDivider,
         MatExpansionPanel,
         MatExpansionPanelHeader,
         MatExpansionPanelTitle
