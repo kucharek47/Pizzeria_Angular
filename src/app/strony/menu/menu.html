@@ -20,11 +20,12 @@
               <img [src]="item.obrazek_path" class="wpasowanie_obrazka">
               <div class="nazwa_i_skladniki">
                 <span class="tytul">{{ item.nazwa }}</span>
-                <span class="skladniki">Dodatkowe składniki:
-                  @for (skladnik of item.skladniki; track $index) {
-                    {{skladnik}}{{$last ? '': ', '}}
-                  }
-                  </span>
+                  <span class="skladniki">Dodatkowe składniki:
+                    @if (item.skladniki.length > 0) {brak}
+                    @for (skladnik of item.skladniki; track $index) {
+                      {{skladnik}}{{$last ? '': ', '}}
+                    }
+                </span>
               </div>
             } @else {
               <div class="animacja">

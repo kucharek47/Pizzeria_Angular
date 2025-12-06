@@ -2,20 +2,72 @@
 
 <div mat-dialog-content>
   <p>Nazwa: {{ data.nazwa }}</p>
-  <mat-radio-group aria-label="ciasto">
-    <mat-radio-button value="1">Cienkie Włoskie</mat-radio-button>
-    <mat-radio-button value="2">Tradycyjne</mat-radio-button>
-    <mat-radio-button value="3">grube</mat-radio-button>
-  </mat-radio-group>
+  <p>Skladniki:Sos pomidorowy, Ser mozzarella,
+    @for (x of data.skladniki; track $index) {
+      {{x}}{{$last ? "": ", "}}
+    }
+  </p>
+  <p>Ciasto:</p>
+  <div class="radio-ciasto">
+    <label appearance="" tuiChip>
+      Cienkie Włoskie
+      <input
+        appearance="outline-grayscale"
+        name="radio"
+        tuiChip
+        type="radio"
+        [value]="1"/>
+    </label>
+    <label appearance="" tuiChip>
+      Tradycyjne
+      <input
+        appearance="outline-grayscale"
+        name="radio"
+        tuiChip
+        type="radio"
+        [value]="2"/>
+    </label>
+    <label appearance="" tuiChip>
+      Grube
+      <input
+        appearance="outline-grayscale"
+        name="ciasto"
+        tuiChip
+        type="radio"
+        [value]="3"/>
+    </label>
+  </div>
+  <p>Sosy na pizzy</p>
+  <div class="radio-ciasto">
+    @for (x of lista_sosow;track x) {
+      <label appearance="" tuiChip>
+        {{x}}
+        <input
+          appearance="outline-grayscale"
+          name="sosy"
+          tuiChip
+          type="radio"
+          [(ngModel)]="wybrany_sos_index"
+          [value]="$index"/>
+      </label>
+    }
+  </div>
+  <p>Rozmiar pizzy:</p>
+  <div class="radio-ciasto">
+    @for (x of rozmiary;track x) {
+      <label appearance="" tuiChip>
+        {{x}}cm
+        <input
+          appearance="outline-grayscale"
+          name="rozmiar"
+          tuiChip
+          type="radio"
+          [(ngModel)]="rozmiar"
+          [value]="$index"/>
+      </label>
+    }
+  </div>
 
-  <mat-form-field appearance="fill" style="width: 100%; margin-top: 16px;">
-    <mat-label>Wybierz opcję</mat-label>
-    <mat-select [(value)]="selected">
-      @for(x of options; track x) {
-        <mat-option>{{x}}</mat-option>
-      }
-    </mat-select>
-  </mat-form-field>
 
   <p>Cena: {{ data.cena }} zł</p>
 </div>

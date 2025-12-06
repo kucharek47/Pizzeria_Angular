@@ -6,6 +6,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
+import {TuiChevron, TuiChip, TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
+import {TuiTextfield} from '@taiga-ui/core';
 
 
 @Component({
@@ -19,13 +21,20 @@ import { MatOptionModule } from '@angular/material/core';
     MatButtonModule,
     MatFormFieldModule,
     MatSelectModule,
-    MatOptionModule
+    MatOptionModule,
+    TuiChip,
+    TuiDataListWrapper,
+    TuiTextfield,
+    TuiChevron,
+    TuiSelect
   ]
 })
 export class OpcjeMenu {
-
-  options = ['Cienkie Włoskie', 'Tradycyjne', 'Grube'];
-  selected: string | null = null;
+  rozmiary:number[] = [24,32,42,60];
+  rozmiar:number = 0;
+  lista_sosow:string[] = ["czosnkow","pomidorowy","lagodny"]
+  selectedValue:string = "";
+  wybrany_sos_index:number = 0;
   data = inject(MAT_DIALOG_DATA);
   dialogRef = inject(MatDialogRef);
 

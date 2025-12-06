@@ -76,4 +76,5 @@ export class Menu {
       exitAnimationDuration: '150ms'
     });
   }
+  protected readonly console = console;
 }
