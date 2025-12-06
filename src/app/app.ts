@@ -23,8 +23,8 @@ export class App implements OnInit {
 
   // Konfiguracja
   private readonly COOKIE_NAME = 'session_token';
-  private readonly API_URL_START = 'http://192.168.10.149:5000/api/start';
-  private readonly API_URL_CHECK = 'http://192.168.10.149:5000/api/check_cookiess';
+  private readonly API_URL_START = '/api/start';
+  private readonly API_URL_CHECK = '/api/check_cookiess';
 
   ngOnInit() {
     this.zarzadzajSesja();

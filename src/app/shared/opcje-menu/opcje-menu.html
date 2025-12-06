@@ -9,33 +9,18 @@
   </p>
   <p>Ciasto:</p>
   <div class="radio-ciasto">
-    <label appearance="" tuiChip>
-      Cienkie Włoskie
-      <input
-        appearance="outline-grayscale"
-        name="radio"
-        tuiChip
-        type="radio"
-        [value]="1"/>
-    </label>
-    <label appearance="" tuiChip>
-      Tradycyjne
-      <input
-        appearance="outline-grayscale"
-        name="radio"
-        tuiChip
-        type="radio"
-        [value]="2"/>
-    </label>
-    <label appearance="" tuiChip>
-      Grube
-      <input
-        appearance="outline-grayscale"
-        name="ciasto"
-        tuiChip
-        type="radio"
-        [value]="3"/>
-    </label>
+    @for (x of ciasta;track x) {
+      <label appearance="" tuiChip>
+        {{x}}
+        <input
+          appearance="outline-grayscale"
+          name="ciasto"
+          tuiChip
+          type="radio"
+          [(ngModel)]="ciasto"
+          [value]="$index"/>
+      </label>
+    }
   </div>
   <p>Sosy na pizzy</p>
   <div class="radio-ciasto">
@@ -67,9 +52,7 @@
       </label>
     }
   </div>
-
-
-  <p>Cena: {{ data.cena }} zł</p>
+  <p>Cena: {{ (rozmiar * 10 + 20) + ((ciasto - 1) * 5) + (data.skladniki.length * ((rozmiar <= 1) ? 3:4)) }} zł</p>
 </div>
 
 <div mat-dialog-actions align="end">

@@ -21,7 +21,7 @@
               <div class="nazwa_i_skladniki">
                 <span class="tytul">{{ item.nazwa }}</span>
                   <span class="skladniki">Dodatkowe składniki:
-                    @if (item.skladniki.length > 0) {brak}
+                    {{(item.skladniki.length > 0) ? "":"brak"}}
                     @for (skladnik of item.skladniki; track $index) {
                       {{skladnik}}{{$last ? '': ', '}}
                     }
