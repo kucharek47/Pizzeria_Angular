@@ -1,1 +1,41 @@
-<p>ukladanie-pizzy works!</p>
+<div class="pizza_do_ulozenia">
+  <img src="images/pizza_gotowe/ser%20grube.png" class="main">
+</div>
+<div class="skladniki">
+  <div class="wyszukiwarka">
+    <search tuiSearch>
+      <form [formGroup]="form">
+        <fieldset formArrayName="filters">
+          <tui-search-filters>
+            <ng-container>
+              <tui-textfield *tuiItem>
+                <label tuiLabel>Wyszukaj skladnik:</label>
+                <input
+                  placeholder="kukurydza"
+                  tuiTextfield
+                  [formControlName]="0"
+                />
+              </tui-textfield>
+            </ng-container>
+          </tui-search-filters>
+        </fieldset>
+      </form>
+    </search>
+  </div>
+  <div class="pole_wyboru">
+    <img class="boczny" [src]="lewy_obrazek">
+    <img class="srodek" [src]="srodkowy_obrazek">
+    <img class="boczny" [src]="prawy_obrazek">
+  </div>
+  <div class="przycisk_potwierdzenia">
+    <button
+      size="xl"
+      tuiButton
+      type="button"
+      (click)="dodaie_skladnika()"
+    >
+      Dodaj skladnik do pizzy
+    </button>
+  </div>
+</div>
+<p>{{form.value | json}}</p>
