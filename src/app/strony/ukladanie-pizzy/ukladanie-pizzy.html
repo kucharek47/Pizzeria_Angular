@@ -1,5 +1,5 @@
 <div class="pizza_do_ulozenia">
-  <img src="images/pizza_gotowe/ser%20grube.png" class="main">
+  <img src="images/pizza_gotowe/ser%20grube.png" class="main_img">
 </div>
 <div class="skladniki">
   <div class="wyszukiwarka">
@@ -23,19 +23,16 @@
     </search>
   </div>
   <div class="pole_wyboru">
-    <img class="boczny" [src]="lewy_obrazek">
-    <img class="srodek" [src]="srodkowy_obrazek">
-    <img class="boczny" [src]="prawy_obrazek">
+    <div class="boczny">
+      <img [src]="lewy_obrazek">
+    </div>
+    <div class="srodek" (click)="dodaie_skladnika()">
+      <img [src]="srodkowy_obrazek">
+    </div>
+    <div class="boczny">
+      <img [src]="prawy_obrazek">
+    </div>
   </div>
-  <div class="przycisk_potwierdzenia">
-    <button
-      size="xl"
-      tuiButton
-      type="button"
-      (click)="dodaie_skladnika()"
-    >
-      Dodaj skladnik do pizzy
-    </button>
-  </div>
+  <button tuiButton class="przycisk_zatwierdzenia">Zatwierdz</button>
 </div>
-<p>{{form.value | json}}</p>
+
