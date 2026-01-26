@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { TuiButton, TuiDataList, TuiTextfield } from '@taiga-ui/core';
+import { TuiButton, TuiTextfield } from '@taiga-ui/core';
 import { FormArray, FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, distinctUntilChanged } from 'rxjs';
 import { TuiSearch } from '@taiga-ui/layout';
-import { JsonPipe } from '@angular/common';
+import {TuiTable} from '@taiga-ui/addon-table';
+import {TuiInputNumberModule} from '@taiga-ui/legacy';
 
 @Component({
   selector: 'app-ukladanie-pizzy',
@@ -11,14 +12,14 @@ import { JsonPipe } from '@angular/common';
   imports: [
     TuiTextfield,
     FormsModule,
-    TuiDataList,
     ReactiveFormsModule,
     TuiSearch,
     TuiButton,
-    JsonPipe
+    TuiTable,
+    TuiInputNumberModule
   ],
   templateUrl: './ukladanie-pizzy.html',
-  styleUrl: './ukladanie-pizzy.css',
+  styleUrl: './ukladanie-pizzy.scss',
 })
 export class UkladaniePizzy implements OnInit {
   slownik: Record<string, string> = {
@@ -36,18 +37,17 @@ export class UkladaniePizzy implements OnInit {
   lewy_obrazek: string = "";
   srodkowy_obrazek: string = "";
   prawy_obrazek: string = "";
+  aktualnie_wybrany: string = "";
+  skladniki_dodane: Record<string, number> = {}
 
-  // Definicja formularzy
   protected readonly filters = new FormArray([
     new FormControl('')
   ]);
   protected readonly form = new FormGroup({ filters: this.filters });
 
   ngOnInit() {
-    // Inicjalne załadowanie
     this.ladowanie_obrazkow();
 
-    // Nasłuchiwanie zmian na pierwszym polu w tablicy (indeks 0)
     this.filters.controls[0].valueChanges.pipe(
       debounceTime(300),
       distinctUntilChanged()
@@ -55,7 +55,6 @@ export class UkladaniePizzy implements OnInit {
       this.ladowanie_obrazkow();
     });
   }
-
   ladowanie_obrazkow() {
     let lista: string[] = [];
     const szukanaFraza = this.filters.at(0).value;
@@ -70,7 +69,6 @@ export class UkladaniePizzy implements OnInit {
       lista = Object.keys(this.slownik);
     }
 
-    // Zabezpieczenie przed pustą listą (brak wyników wyszukiwania)
     if (lista.length === 0) {
       this.lewy_obrazek = "";
       this.srodkowy_obrazek = "";
@@ -86,6 +84,7 @@ export class UkladaniePizzy implements OnInit {
       random_index2 = Math.floor(Math.random() * lista.length);
     }
     this.srodkowy_obrazek = this.slownik[lista[random_index2]];
+    this.aktualnie_wybrany = lista[random_index2];
 
     let random_index3: number = Math.floor(Math.random() * lista.length);
     if ((random_index3 == random_index2 || random_index3 == random_index) && lista.length > 1) {
@@ -94,7 +93,13 @@ export class UkladaniePizzy implements OnInit {
     this.prawy_obrazek = this.slownik[lista[random_index3]];
   }
 
-  dodaie_skladnika() {
-    // Logika dodawania
+  dodaie_skladnika(skladnik: string): void {
+    if (this.skladniki_dodane[skladnik]) {
+      this.skladniki_dodane[skladnik] += 1
+    } else {
+      this.skladniki_dodane[skladnik] = 1
+    }
   }
+
+  protected readonly Object = Object;
 }

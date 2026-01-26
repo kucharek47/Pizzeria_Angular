@@ -16,12 +16,10 @@ import { Orientacja } from './services/orientacja/orientacja';
 })
 export class App implements OnInit {
 
-  // Wstrzykiwanie
   private http = inject(HttpClient);
   private cookieService = inject(CookieService);
   orientacja = inject(Orientacja);
 
-  // Konfiguracja
   private readonly COOKIE_NAME = 'session_token';
   private readonly API_URL_START = '/api/start';
   private readonly API_URL_CHECK = '/api/check_cookiess';
@@ -42,16 +40,13 @@ export class App implements OnInit {
     }
   }
 
-  // Funkcja 1: Sprawdza czy ciastko jest w bazie
   private sprawdzWaznoscSesji() {
-    // Ważne: withCredentials: true jest tu kluczowe, żeby backend dostał ciastko!
     this.http.post<any>(this.API_URL_CHECK, {}, { withCredentials: true }).subscribe({
       next: (response) => {
         if (response.error_cookies === false) {
           console.log('✅ Sesja jest ważna i aktywna.');
         } else {
           console.warn('🚨 Sesja nieważna (błąd backendu):', response.powod);
-          // Skoro stare ciastko jest złe, pobieramy nowe
           this.utworzNowaSesje();
         }
       },
@@ -61,7 +56,6 @@ export class App implements OnInit {
     });
   }
 
-  // Funkcja 2: Tworzy zupełnie nową sesję
   private utworzNowaSesje() {
     this.http.post<{ cookies: string }>(this.API_URL_START, {}).subscribe({
       next: (response) => {

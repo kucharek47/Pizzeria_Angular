@@ -1,12 +1,12 @@
 .nav-mod-mobile {
-  padding-top: 8vh;
-  padding-bottom: 8vh;
-  height: 84vh;
+  padding-top: 8dvh;
+  padding-bottom: 8dvh;
+  height: 84dvh;
   width: 100vw;
 }
 .nav-mod-desktop {
   padding-left: 11vw;
-  height: 100vh;
+  height: 100dvh;
   width: 89vw;
 }
 
