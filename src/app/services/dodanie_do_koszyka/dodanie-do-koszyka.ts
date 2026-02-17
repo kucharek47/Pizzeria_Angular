@@ -19,4 +19,7 @@ export class KoszykService {
   usun_pozycje_z_koszyka(id_pozycji: string): Observable<any> {
     return this.http.post<any>('/api/usun_z_koszyka', { id_pozycji: id_pozycji }, { withCredentials: true });
   }
+  zloz_zamowienie(dane_dostawy: any): Observable<any> {
+    return this.http.post('/api/zloz_zamowienie', dane_dostawy, { withCredentials: true });
+  }
 }

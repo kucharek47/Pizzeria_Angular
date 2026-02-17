@@ -1,12 +1,14 @@
 .nav-mod-mobile {
   padding-top: 8dvh;
   padding-bottom: 8dvh;
-  height: 84dvh;
+  height: 100dvh;
   width: 100vw;
+  box-sizing: border-box;
+  overflow: hidden;
 }
+
 .nav-mod-desktop {
   padding-left: 11vw;
   height: 100dvh;
   width: 89vw;
 }
-

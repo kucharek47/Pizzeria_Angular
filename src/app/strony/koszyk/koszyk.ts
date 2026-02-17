@@ -1,5 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { TuiButton, TuiTextfield } from '@taiga-ui/core';
 import { TuiTable } from '@taiga-ui/addon-table';
 import { KoszykService } from '../../services/dodanie_do_koszyka/dodanie-do-koszyka';
@@ -27,6 +28,7 @@ export interface PozycjaKoszyka {
 })
 export class Koszyk implements OnInit {
   private koszyk_serwis = inject(KoszykService);
+  private router = inject(Router);
 
   formularz_dostawy = new FormGroup({
     imie: new FormControl(''),
@@ -96,7 +98,16 @@ export class Koszyk implements OnInit {
 
   zamow_i_zaplac(): void {
     const dane_klienta = this.formularz_dostawy.value;
-    console.log('Dane klienta:', dane_klienta);
-    console.log('Zawartość koszyka:', this.lista_w_koszyku);
+
+    this.koszyk_serwis.zloz_zamowienie(dane_klienta).subscribe({
+      next: (odpowiedz) => {
+        if (!odpowiedz.error_cookies) {
+          this.router.navigate(['/zamowione']);
+        }
+      },
+      error: (blad) => {
+        console.error('Błąd przy składaniu zamówienia', blad);
+      }
+    });
   }
 }
