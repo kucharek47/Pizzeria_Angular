@@ -1,1 +1,85 @@
-<p>koszyk works!</p>
+<div class="glowny_kontener_koszyka">
+
+  <div class="sekcja_danych">
+    <h2>Dane do dostawy</h2>
+    <form [formGroup]="formularz_dostawy" class="formularz_klienta">
+
+      <tui-textfield>
+        <label tuiLabel>Imię</label>
+        <input tuiTextfield formControlName="imie" />
+      </tui-textfield>
+
+      <tui-textfield>
+        <label tuiLabel>Nazwisko</label>
+        <input tuiTextfield formControlName="nazwisko" />
+      </tui-textfield>
+
+      <tui-textfield>
+        <label tuiLabel>Telefon</label>
+        <input tuiTextfield formControlName="telefon" type="tel" />
+      </tui-textfield>
+
+      <tui-textfield>
+        <label tuiLabel>Pełny adres</label>
+        <input tuiTextfield formControlName="adres" />
+      </tui-textfield>
+
+    </form>
+  </div>
+
+  <div class="sekcja_zamowienia">
+    <h2>Twoje zamówienie</h2>
+
+    <div class="tabela_kontener">
+      <table tuiTable class="tabela_koszyka">
+        <thead>
+        <tr>
+          <th tuiTh>Pizza</th>
+          <th tuiTh>Cena</th>
+          <th tuiTh></th>
+        </tr>
+        </thead>
+        <tbody tuiTbody>
+          @for (pozycja of lista_w_koszyku; track pozycja.id_pozycji) {
+            <tr>
+              <td tuiTd>
+                <div class="opis_pizzy">
+                  <span class="gruby_tekst">Własna kompozycja</span>
+                  <span class="maly_tekst">Ciasto: {{pozycja.ciasto}}, Rozmiar: {{pozycja.rozmiar}}</span>
+                  <span class="maly_tekst">Sos: {{pozycja.sos}}</span>
+                  <span class="maly_tekst">Dodatki: {{pozycja.skladniki.length > 0 ? pozycja.skladniki.join(', ') : 'brak'}}</span>
+                </div>
+              </td>
+              <td tuiTd class="komorka_ceny">
+                {{pozycja.wartosc}} zł
+              </td>
+              <td tuiTd class="komorka_akcji">
+                <button tuiButton appearance="destructive" size="s" (click)="usun_z_koszyka(pozycja.id_pozycji)">
+                  Usuń
+                </button>
+              </td>
+            </tr>
+          }
+          @if (lista_w_koszyku.length === 0) {
+            <tr>
+              <td tuiTd colspan="3" class="pusty_koszyk">
+                Twój koszyk jest pusty.
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <div class="podsumowanie">
+      <div class="razem">
+        <span>Do zapłaty:</span>
+        <span class="kwota_razem">{{calkowita_wartosc}} zł</span>
+      </div>
+      <button tuiButton size="l" class="przycisk_zaplac" (click)="zamow_i_zaplac()" [disabled]="lista_w_koszyku.length === 0">
+        Zamów i zapłać
+      </button>
+    </div>
+  </div>
+
+</div>

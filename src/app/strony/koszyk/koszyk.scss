@@ -1,0 +1,104 @@
+.glowny_kontener_koszyka {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 30px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+
+  .sekcja_danych {
+    .formularz_klienta {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+  }
+
+  .sekcja_zamowienia {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    .tabela_kontener {
+      overflow-x: auto;
+
+      .tabela_koszyka {
+        width: 100%;
+
+        .opis_pizzy {
+          display: flex;
+          flex-direction: column;
+
+          .gruby_tekst {
+            font-weight: 600;
+          }
+          .maly_tekst {
+            font-size: 0.85em;
+            color: #666;
+          }
+        }
+
+        .komorka_ceny {
+          font-weight: 500;
+          white-space: nowrap;
+        }
+
+        .komorka_akcji {
+          text-align: right;
+        }
+
+        .pusty_koszyk {
+          text-align: center;
+          padding: 30px;
+          color: #888;
+        }
+      }
+    }
+
+    .podsumowanie {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 15px;
+
+      .razem {
+        font-size: 1.2rem;
+
+        .kwota_razem {
+          font-weight: bold;
+          margin-left: 10px;
+        }
+      }
+
+      .przycisk_zaplac {
+        width: 100%;
+        max-width: 300px;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .glowny_kontener_koszyka {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 15px;
+
+    .sekcja_zamowienia {
+      .podsumowanie {
+        align-items: center;
+
+        .przycisk_zaplac {
+          max-width: 100%;
+        }
+      }
+    }
+  }
+}
