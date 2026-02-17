@@ -1,7 +1,20 @@
 <div class="main">
   <div class="zarzadzanie">
     <div class="pizza_do_ulozenia">
-      <img src="images/pizza_gotowe/ser%20grube.png" class="main_img">
+      <div class="kontener_pizzy">
+        <img src="images/pizza_gotowe/ser%20grube.png" class="main_img">
+
+        @for (skladnik of wygenerowane_skladniki; track $index) {
+          <img
+            [src]="skladnik.url"
+            class="skladnik_animowany"
+            [style.left.%]="skladnik.x_procent"
+            [style.top.%]="skladnik.y_procent"
+            [style.z-index]="skladnik.z_indeks"
+            [style.--start-z.px]="skladnik.z_start"
+            [style.--rotacja.deg]="skladnik.rotacja">
+        }
+      </div>
     </div>
     <div class="skladniki">
       <div class="wyszukiwarka">
@@ -25,17 +38,23 @@
         </search>
       </div>
       <div class="pole_wyboru">
-        <div class="boczny">
+        <div class="boczny lewy" (click)="przesun_lewo()">
+          <div class="nakladka">
+            <span class="material-symbols-outlined">chevron_left</span>
+          </div>
           <img [src]="lewy_obrazek">
         </div>
         <div class="srodek" (click)="dodaie_skladnika(aktualnie_wybrany)">
           <img [src]="srodkowy_obrazek">
         </div>
-        <div class="boczny">
+        <div class="boczny prawy" (click)="przesun_prawo()">
+          <div class="nakladka">
+            <span class="material-symbols-outlined">chevron_right</span>
+          </div>
           <img [src]="prawy_obrazek">
         </div>
       </div>
-      <button tuiButton class="przycisk_zatwierdzenia">Zatwierdz</button>
+      <button tuiButton class="przycisk_zatwierdzenia" (click)="zamow_kompozycje()">Zamów</button>
     </div>
   </div>
   <div class="lista">
@@ -55,12 +74,11 @@
             <td tuiTd><img src="{{slownik[x]}}" class="obrazek_listy"></td>
             <td tuiTd><span>{{x}}</span></td>
             <td tuiTd>
-              <tui-input-number
-                [min]="0"
-                [step]="1"
-                [(ngModel)]="skladniki_dodane[x]"
-              >
-              </tui-input-number>
+              <div class="kontrolki_ilosci">
+                <button tuiButton size="s" appearance="secondary" (click)="zmiana_ilosci(x, skladniki_dodane[x] - 1)">-</button>
+                <span class="ilosc_tekst">{{skladniki_dodane[x]}}</span>
+                <button tuiButton size="s" appearance="secondary" (click)="zmiana_ilosci(x, skladniki_dodane[x] + 1)">+</button>
+              </div>
             </td>
           </tr>
         }

@@ -1,21 +1,28 @@
-const slices = document.querySelectorAll('.ekran_ladowania .kawalek_pizzy img');
-let index = 0;
-let filling = true;
+const kawalki_pizzy = document.querySelectorAll('.ekran_ladowania .kawalek_pizzy img');
+let indeks = 0;
+let wypelnianie = true;
 
-setInterval(() => {
-  if (filling) {
-    slices[index].src = 'images/pizza/pizza_pionowo_mix.png';
-    index++;
-    if (index >= slices.length) {
-      filling = false; // wszystkie pełne, zaczynamy opróżnianie
-      index = 0;
+const interval_id = setInterval(() => {
+  const ekran_ladowania = document.querySelector('.ekran_ladowania');
+
+  if (!ekran_ladowania) {
+    clearInterval(interval_id);
+    return;
+  }
+
+  if (wypelnianie) {
+    kawalki_pizzy[indeks].src = 'images/pizza/pizza_pionowo_mix.png';
+    indeks++;
+    if (indeks >= kawalki_pizzy.length) {
+      wypelnianie = false;
+      indeks = 0;
     }
   } else {
-    slices[index].src = 'images/pizza/pizza_pionowo_pusta.png';
-    index++;
-    if (index >= slices.length) {
-      filling = true; // wracamy do wypełniania
-      index = 0;
+    kawalki_pizzy[indeks].src = 'images/pizza/pizza_pionowo_pusta.png';
+    indeks++;
+    if (indeks >= kawalki_pizzy.length) {
+      wypelnianie = true;
+      indeks = 0;
     }
   }
 }, 250);
